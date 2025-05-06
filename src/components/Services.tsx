@@ -79,14 +79,14 @@ const Services: React.FC = () => {
           <h2>Our Services</h2>
         </div>
         <Carousel 
-          className="services-carousel"
+          className="services-carousel custom-carousel"
           fade
           interval={5000}
           indicators={true}
           controls={true}
         >
           {services.map((service, index) => (
-            <Carousel.Item key={index}>
+            <Carousel.Item key={index} className="custom-carousel-item">
               <div className="service-card">
                 <div className="service-card-content">
                   <div className="service-image">
@@ -105,8 +105,8 @@ const Services: React.FC = () => {
           ))}
         </Carousel>
         <div className="text-center mt-4">
-          <Link to="/services" className="btn btn-primary">
-            More Services
+          <Link to="/services" className="btn btn-elevated">
+            <i className="bi bi-plus-circle"></i> More Services
           </Link>
         </div>
       </motion.div>
