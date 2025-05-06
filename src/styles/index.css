@@ -3,15 +3,16 @@
   --primary-color: #ff6b6b;
   --secondary-color: #6a11cb;
   --text-color: #fff;
-  --background-dark: #222;
-  --background-darker: #111;
+  --background-dark: #050b1a;
+  --background-darker: #020510;
   --gradient-primary: linear-gradient(135deg, #6a11cb, #2575fc);
   --gradient-secondary: linear-gradient(135deg, #121212, #1a1a2e);
+  --gradient-background: linear-gradient(135deg, #050b1a, #020510);
 }
 
 body {
   margin: 0;
-  background-color: var(--background-dark);
+  background: var(--gradient-background);
   color: var(--text-color);
   font-family: "Playfair Display", serif;
   min-height: 100vh;
@@ -105,14 +106,14 @@ a {
 .main-content {
   position: relative;
   z-index: 1;
-  background: var(--background-dark);
+  background: var(--gradient-background);
   margin-top: 100vh;
 }
 
 /* Adjust other sections to have proper background */
 #about, #services, #contact {
   position: relative;
-  background: var(--background-dark);
+  background: var(--gradient-background);
 }
 
 .hero h1, .hero h2 {
