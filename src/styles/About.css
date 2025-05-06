@@ -1,0 +1,267 @@
+.about-page {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Hero Section */
+.about-hero {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, rgba(106, 17, 203, 0.1), rgba(37, 117, 252, 0.1));
+}
+
+.about-hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-hero .lead {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-image {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+  transform: scale(1.02);
+}
+
+/* History Section */
+.about-history {
+  padding: 6rem 0;
+}
+
+.about-history h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--gradient-primary);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.5rem;
+  top: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+}
+
+.timeline-item h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-item p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.history-image {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Achievements Section */
+.about-achievements {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, rgba(106, 17, 203, 0.05), rgba(37, 117, 252, 0.05));
+}
+
+.achievement-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+}
+
+.achievement-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.achievement-card h3 {
+  color: var(--primary-color);
+  margin: 15px 0;
+  font-size: 1.4rem;
+}
+
+.achievement-card p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Teaching Philosophy */
+.about-philosophy {
+  padding: 6rem 0;
+}
+
+.philosophy-points {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.philosophy-points li {
+  padding: 0.5rem 0;
+  color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.philosophy-points li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+}
+
+.philosophy-image {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Call to Action */
+.about-cta {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, rgba(106, 17, 203, 0.1), rgba(37, 117, 252, 0.1));
+  text-align: center;
+}
+
+.about-cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.about-cta p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+}
+
+/* Modal Styles */
+.modal-content {
+  background: var(--bg-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-title {
+  color: var(--text-color);
+}
+
+.form-label {
+  color: var(--text-color);
+}
+
+.form-control {
+  background: rgba(20, 20, 20, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+}
+
+.form-control:focus {
+  background: rgba(20, 20, 20, 0.9);
+  border-color: var(--primary-color);
+  color: var(--text-color);
+  box-shadow: 0 0 0 0.25rem rgba(106, 17, 203, 0.25);
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+  .about-hero {
+    padding: 4rem 0;
+  }
+
+  .about-hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .about-hero .lead {
+    font-size: 1.2rem;
+  }
+
+  .about-history,
+  .about-achievements,
+  .about-philosophy,
+  .about-cta {
+    padding: 4rem 0;
+  }
+
+  .timeline {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .about-hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .achievement-card {
+    margin-bottom: 2rem;
+  }
+
+  .philosophy-image {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .achievement-image {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .achievement-card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .achievement-card p {
+    font-size: 0.9rem;
+  }
+} 
