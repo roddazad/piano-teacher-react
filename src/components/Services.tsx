@@ -1,47 +1,115 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { motion, useInView } from 'framer-motion';
+import { Carousel } from 'react-bootstrap';
+import '../styles/Services.css';
 
 const Services: React.FC = () => {
+  const servicesRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const location = useLocation();
+  const isMainPage = location.pathname === '/';
+
+  const services = [
+    {
+      title: "Piano Lessons",
+      description: "Personalized piano lessons for all skill levels, from beginners to advanced players.",
+      image: "../src/assets/Pictures/service-1.jpeg"
+    },
+    {
+      title: "Music Theory",
+      description: "Comprehensive music theory classes to enhance your understanding of music.",
+      image: "../src/assets/Pictures/service-2.jpg"
+    },
+    {
+      title: "Performance Training",
+      description: "Expert guidance in performance techniques and stage presence.",
+      image: "../src/assets/Pictures/service-3.png"
+    },
+    {
+      title: "Composition",
+      description: "Learn the art of composing your own music and arrangements.",
+      image: "../src/assets/Pictures/service-4.jpeg"
+    }
+  ];
+
+  const isInView = useInView(servicesRef, { once: true, amount: 0.3 });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (servicesRef.current) {
+        const rect = servicesRef.current.getBoundingClientRect();
+        const isInViewport = rect.top < window.innerHeight && rect.bottom >= 0;
+        setIsVisible(isInViewport);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  if (!isMainPage) {
+    return null; // Don't render anything on the dedicated services page
+  }
+
   return (
-    <section id="services" className="container text-center py-5">
-      <h2>My Services</h2>
-      <div className="row justify-content-center">
-        <div className="col-md-4 mb-4">
-          <div className="service-card">
-            <img src="../src/assets/Pictures/youthLearning.jpeg" className="card-img-top" alt="Piano Lessons" />
-            <div className="card-body">
-              <h5 className="card-title">Piano Lessons</h5>
-              <p className="card-text">
-                Professional piano lessons for all ages and skill levels. Learn proper technique,
-                music theory, and performance skills in a supportive environment.
-              </p>
-            </div>
-          </div>
+    <section id="services" className="services-section" ref={servicesRef}>
+      <motion.div
+        initial={{ opacity: 0, y: 100, scale: 0.95 }}
+        animate={isInView ? { 
+          opacity: 1, 
+          y: 0, 
+          scale: 1,
+          transition: {
+            type: "spring",
+            stiffness: 100,
+            damping: 20,
+            mass: 1
+          }
+        } : { 
+          opacity: 0, 
+          y: 100, 
+          scale: 0.95 
+        }}
+        className="services-container"
+      >
+        <div className="text-center mb-5">
+          <h2>Our Services</h2>
         </div>
-        <div className="col-md-4 mb-4">
-          <div className="service-card">
-            <img src="../src/assets/Pictures/adultLearning.jpeg" className="card-img-top" alt="Music Theory" />
-            <div className="card-body">
-              <h5 className="card-title">Music Theory</h5>
-              <p className="card-text">
-                Comprehensive music theory lessons covering notation, harmony, composition,
-                and ear training to enhance your musical understanding.
-              </p>
-            </div>
-          </div>
+        <Carousel 
+          className="services-carousel"
+          fade
+          interval={5000}
+          indicators={true}
+          controls={true}
+        >
+          {services.map((service, index) => (
+            <Carousel.Item key={index}>
+              <div className="service-card">
+                <div className="service-card-content">
+                  <div className="service-image">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                    />
+                  </div>
+                  <div className="service-details">
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                  </div>
+                </div>
+              </div>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+        <div className="text-center mt-4">
+          <Link to="/services" className="btn btn-primary">
+            More Services
+          </Link>
         </div>
-        <div className="col-md-4 mb-4">
-          <div className="service-card">
-            <img src="../src/assets/Pictures/pic3.jpg" className="card-img-top" alt="Performance Training" />
-            <div className="card-body">
-              <h5 className="card-title">Performance Training</h5>
-              <p className="card-text">
-                Specialized training for performances, competitions, and auditions. Build
-                confidence and stage presence while perfecting your repertoire.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
