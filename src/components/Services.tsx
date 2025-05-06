@@ -1,14 +1,22 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Carousel } from 'react-bootstrap';
 import '../styles/Services.css';
 
 const Services: React.FC = () => {
-  const servicesRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const servicesRef = useRef(null);
   const location = useLocation();
   const isMainPage = location.pathname === '/';
+
+  const { scrollYProgress } = useScroll({
+    target: servicesRef,
+    offset: ["start end", "center center"]
+  });
+
+  const rotateX = useTransform(scrollYProgress, [0, 1], [60, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.1, 1], [0.5, 1, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
 
   const services = [
     {
@@ -33,72 +41,38 @@ const Services: React.FC = () => {
     }
   ];
 
-  const isInView = useInView(servicesRef, { once: true, amount: 0.3 });
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (servicesRef.current) {
-        const rect = servicesRef.current.getBoundingClientRect();
-        const isInViewport = rect.top < window.innerHeight && rect.bottom >= 0;
-        setIsVisible(isInViewport);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial position
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   if (!isMainPage) {
-    return null; // Don't render anything on the dedicated services page
+    return null;
   }
 
   return (
     <section id="services" className="services-section" ref={servicesRef}>
-      <motion.div
-        initial={{ opacity: 0, y: 100, scale: 0.95 }}
-        animate={isInView ? { 
-          opacity: 1, 
-          y: 0, 
-          scale: 1,
-          transition: {
-            type: "spring",
-            stiffness: 100,
-            damping: 20,
-            mass: 1
-          }
-        } : { 
-          opacity: 0, 
-          y: 100, 
-          scale: 0.95 
-        }}
+      <motion.div 
         className="services-container"
+        style={{ 
+          rotateX,
+          opacity,
+          y,
+          transformOrigin: "center bottom"
+        }}
       >
-        <div className="text-center mb-5">
-          <h2>Our Services</h2>
-        </div>
+        <h2>My Services</h2>
         <Carousel 
-          className="services-carousel custom-carousel"
-          fade
-          interval={5000}
-          indicators={true}
+          interval={null} 
+          indicators={true} 
           controls={true}
         >
           {services.map((service, index) => (
-            <Carousel.Item key={index} className="custom-carousel-item">
+            <Carousel.Item key={index}>
               <div className="service-card">
-                <div className="service-card-content">
-                  <div className="service-image">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                    />
-                  </div>
-                  <div className="service-details">
-                    <h3>{service.title}</h3>
-                    <p>{service.description}</p>
-                  </div>
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="card-img-top"
+                />
+                <div className="card-body">
+                  <h3 className="card-title">{service.title}</h3>
+                  <p className="card-text">{service.description}</p>
                 </div>
               </div>
             </Carousel.Item>
