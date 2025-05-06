@@ -308,4 +308,139 @@ a {
   .floating-note {
     font-size: 2rem;
   }
+}
+
+/* Contact Section Social Icons */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  font-size: 1.5rem;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+}
+
+.social-icon:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(106, 17, 203, 0.5);
+  color: white;
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+}
+
+.contact-details {
+  margin: 2rem 0;
+}
+
+.contact-details p {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+
+.contact-details i {
+  margin-right: 0.5rem;
+  color: #6a11cb;
+}
+
+@media (max-width: 768px) {
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .contact-details p {
+    font-size: 1rem;
+  }
+}
+
+/* Contact Modal Styles */
+.contact-modal .modal-content {
+  background: var(--gradient-background);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  color: white;
+}
+
+.contact-modal .modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+}
+
+.contact-modal .modal-title {
+  font-family: "Dancing Script", cursive;
+  font-size: 1.8rem;
+  color: white;
+}
+
+.contact-modal .modal-body {
+  padding: 1.5rem;
+}
+
+.contact-modal .form-label {
+  color: white;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-modal .form-control {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.contact-modal .form-control:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(106, 17, 203, 0.25);
+  color: white;
+}
+
+.contact-modal .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-modal .btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.contact-modal .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.contact-modal .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+@media (max-width: 768px) {
+  .contact-modal .modal-dialog {
+    margin: 1rem;
+  }
+  
+  .contact-modal .modal-title {
+    font-size: 1.5rem;
+  }
+  
+  .contact-modal .form-label {
+    font-size: 1rem;
+  }
 } 
