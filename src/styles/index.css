@@ -443,4 +443,46 @@ a {
   .contact-modal .form-label {
     font-size: 1rem;
   }
+}
+
+/* Footer Company Promise */
+.company-promise {
+  padding: 1rem 0;
+}
+
+.company-promise p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  font-style: italic;
+  margin: 0;
+  position: relative;
+  padding: 0 1rem;
+}
+
+.company-promise i {
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.company-promise p::before {
+  content: '\2605';
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  position: absolute;
+  left: -0.5rem;
+  top: -0.5rem;
+}
+
+@media (max-width: 768px) {
+  .company-promise p {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+  
+  .company-promise i {
+    font-size: 1.1rem;
+  }
 } 

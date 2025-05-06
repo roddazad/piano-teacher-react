@@ -19,11 +19,14 @@ const Footer: React.FC = () => {
             </div>
           </div>
           <div className="col-md-4">
-            <h4>Connect With Me</h4>
-            <div className="social-icons">
-              <a href="#"><i className="bi bi-facebook"></i></a>
-              <a href="#"><i className="bi bi-instagram"></i></a>
-              <a href="#"><i className="bi bi-youtube"></i></a>
+            <h4>Our Promise</h4>
+            <div className="company-promise">
+              <p>
+                <i className="bi bi-stars"></i>
+                Nurturing musical excellence through personalized instruction, 
+                fostering creativity, and building confidence in every student's 
+                journey to piano mastery.
+              </p>
             </div>
           </div>
           <div className="col-md-4">
