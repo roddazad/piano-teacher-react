@@ -17,6 +17,9 @@
   transform-style: preserve-3d;
   transform-origin: center bottom;
   will-change: transform;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .services-section h2 {
@@ -24,6 +27,9 @@
   margin-bottom: 3rem;
   font-size: 2.5rem;
   color: var(--text-color);
+  width: 100%;
+  position: relative;
+  top: 0;
 }
 
 .service-card {

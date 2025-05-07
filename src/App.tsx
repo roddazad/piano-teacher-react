@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import AboutPage from './pages/AboutPage';
+import ServicePage from './pages/ServicePage';
 import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -30,7 +31,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/services" element={<Services />} />
+          <Route path="/services" element={<ServicePage />} />
         </Routes>
         <Footer />
       </div>
