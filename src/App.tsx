@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import AboutPage from './pages/AboutPage';
 import ServicePage from './pages/ServicePage';
+import Dashboard from './pages/Dashboard';
 import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -32,6 +33,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicePage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
         <Footer />
       </div>
